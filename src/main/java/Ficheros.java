@@ -1,5 +1,8 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,5 +82,32 @@ public class Ficheros {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public JSONArray leerFichero() {
+        try {
+            // Creando un objeto FileReader con la ruta del archivo
+            FileReader fr = new FileReader(ruta);
+            // Creando un objeto BufferedReader para leer el archivo
+            BufferedReader br = new BufferedReader(fr);
+            // Creando un StringBuilder para almacenar el contenido del archivo
+            StringBuilder sb = new StringBuilder();
+            // Creando una variable para almacenar cada línea del archivo
+            String linea;
+            // Recorriendo el archivo línea por línea
+            while ((linea = br.readLine()) != null) {
+                // Agregando la línea al StringBuilder
+                sb.append(linea);
+            }
+            // Cerrando el BufferedReader
+            br.close();
+            // Creando un JSONArray a partir del contenido del StringBuilder
+            return datos = new JSONArray(sb.toString());
+
+        } catch (IOException e) {
+            // Imprimiendo la traza de la excepción en caso de error
+            e.printStackTrace();
+        }
+        return null;
     }
 }

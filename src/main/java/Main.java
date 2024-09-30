@@ -1,3 +1,8 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         // Creación de objetos AlumnosTel con los datos de los alumnos
@@ -26,6 +31,19 @@ public class Main {
             System.out.println("Fichero guardado correctamente");
         } else {
             System.out.println("Error al guardar el fichero");
+        }
+
+        // Creación de un nuevo objeto Ficheros para leer los datos del fichero
+        Ficheros f2 = new Ficheros();
+        JSONArray datos = f2.leerFichero();
+        for (int i = 0; i < datos.length(); i++) {
+            System.out.println();
+            JSONObject alumno = datos.getJSONObject(i);
+            System.out.println("ID: " + alumno.getLong("idAlumno"));
+            System.out.println("Nombre: " + alumno.getString("nombre"));
+            System.out.println("Edad: " + alumno.getInt("edad"));
+            System.out.println("Repetidor: " + alumno.getBoolean("repetidor"));
+            System.out.println("Teléfono: " + alumno.getJSONArray("telefono"));
         }
     }
 }
