@@ -1,10 +1,7 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -86,6 +83,10 @@ public class Ficheros {
 
     public JSONArray leerFichero() {
         try {
+            if (!new File(ruta).exists())
+                throw new FileNotFoundException("El archivo no existe");
+            if (!new File(ruta).isFile())
+                throw new FileNotFoundException("La ruta es un directorio");
             // Creando un objeto FileReader con la ruta del archivo
             FileReader fr = new FileReader(ruta);
             // Creando un objeto BufferedReader para leer el archivo
