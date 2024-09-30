@@ -10,6 +10,12 @@ public class Main {
                 new String[]{"222111214","515626677"});
 
         AlumnosTel[] alumnos = {a1, a2, a3, a4};
-
+        Ficheros f = new Ficheros();
+        f.agregarAlumnos(alumnos);
+        if (f.guardarFichero()){
+            System.out.println("Fichero guardado correctamente");
+        } else {
+            System.out.println("Error al guardar el fichero");
+        }
     }
 }
